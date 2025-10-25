@@ -1,0 +1,430 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Portafolis Gisela Ruiz</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-watcher/dist/aframe-watcher.min.js"></script>
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+        }
+
+        #escena-container {
+            position: fixed;
+            inset: 0;
+            border: none;
+            overflow: hidden;
+        }
+
+        a-scene {
+            width: 100vw;
+            height: 100vh;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="escena-container">
+        <a-scene cursor="rayOrigin: mouse" vr-mode-ui="enabled: false">
+
+            <a-assets>
+                <!-- GLTF models -->
+                <a-asset-item id="assetArdilla" src="/assets/Ardilla/scene.gltf"></a-asset-item>
+                <a-asset-item id="assetArbol" src="/assets/arbol/scene.gltf"></a-asset-item>
+                <a-asset-item id="assetBolsa" src="/assets/bolsa/scene.gltf"></a-asset-item>
+                <a-asset-item id="assetGyroid" src="/assets/gyroid/scene.gltf"></a-asset-item>
+                <a-asset-item id="assetStar" src="/assets/star/scene.gltf"></a-asset-item>
+
+                <!-- Backgrounds -->
+                <img id="terra" src="/assets/cesped.jpg" />
+                <img id="cel" src="/assets/cielo.jpg" />
+
+                <!-- Imatges per la grid (assegura't aquestes rutes existixen) -->
+                <img id="treball1" src="/treballsWeb/images/Rick.jpg" />
+                <img id="treball2" src="/treballsWeb/images/2.jpg" />
+                <img id="treball3" src="/treballsWeb/images/3.jpg" />
+                <img id="treball4" src="/treballsWeb/images/4.jpg" />
+                <img id="treball5" src="/treballsWeb/images/GimJump.png" />
+                <img id="treball6" src="/treballsWeb/images/5.jpg" />
+
+                <!-- dentro de <a-assets> -->
+                <video id="projVideo" src="/projectes/Video_TCGBot.mp4" crossorigin="anonymous" playsinline
+                    webkit-playsinline preload="auto"></video>
+
+            </a-assets>
+
+            <!-- Cámara (igual que antes) -->
+            <a-entity camera look-controls limit-look="minYaw: -90; maxYaw: 90; minPitch: -30; maxPitch: 30"></a-entity>
+
+            <a-sky src="#cel"></a-sky>
+
+            <!-- Terra -->
+            <a-cylinder radius="6" height="0.3" src="#terra" position="-1.3 -1.6 -3.5"
+                scale="0.6 -0.01 0.8"></a-cylinder>
+
+            <!-- TEXTOS (inicialment ocults) -->
+            <a-entity id="text-ardilla" position="-0.7 1.2 -6.445" rotation="0 0 0" visible="false">
+                <a-text value="Sobre mi" align="center" color="green" width="20"></a-text>
+            </a-entity>
+
+            <a-entity id="text-arbol" position="-3.99 3.2 -6.445" rotation="0 0 0" visible="false">
+                <a-text value="Treballs web" align="center" color="green" width="20"></a-text>
+            </a-entity>
+
+            <a-entity id="text-bolsa" position="0.5 -0.19 -5.993" rotation="0 0 0" visible="false"
+                scale="0.45 0.45 0.45">
+                <a-text value="Projectes" align="center" color="green" width="20"></a-text>
+            </a-entity>
+
+            <a-entity id="text-gyroid" position="1.129 0.25 -3.726" rotation="0 0 0" visible="false">
+                <a-text value="Github" align="center" color="green" width="10"></a-text>
+            </a-entity>
+
+            <a-entity id="text-star" position="2.959 3.6 -5.993" rotation="0 15 0" visible="false">
+                <a-text value="CV" align="center" color="green" width="10"></a-text>
+            </a-entity>
+
+            <!-- Ardilla -->
+            <a-entity gltf-model="#assetArdilla" position="-1.46 -2.17 -6.445" scale="0.5 0.5 0.5" rotation="0 15 0"
+                mostratext="target: #text-ardilla"
+                animation__enter="startEvents: mouseenter; property: scale; to: 0.55 0.55 0.55; dur: 200"
+                animation__leave="startEvents: mouseleave; property: scale; to: 0.5 0.5 0.5; dur: 500">
+            </a-entity>
+
+            <!-- Arbre (aquest entity serà clicable per obrir la grid) -->
+            <a-entity id="arbreEntity" gltf-model="#assetArbol" position="-3.45 0.287 -5.387" scale="2 2 2"
+                rotation="0 15 0" mostratext="target: #text-arbol"
+                animation__enter="startEvents: mouseenter; property: scale; to: 2.1 2.1 2.1; dur: 200"
+                animation__leave="startEvents: mouseleave; property: scale; to: 2 2 2; dur: 500">
+            </a-entity>
+
+            <!-- Bolsa -->
+            <a-entity id="bolsaEntity" gltf-model="#assetBolsa" position="0.117 -1.61 -5.993" scale="8 8 8"
+                rotation="0 15 0" mostratext="target: #text-bolsa"
+                animation__enter="startEvents: mouseenter; property: scale; to: 9 9 9; dur: 200"
+                animation__leave="startEvents: mouseleave; property: scale; to: 8 8 8; dur: 500">
+            </a-entity>
+
+            <!-- Gyroid -->
+            <a-entity id="gyroidEntity" gltf-model="#assetGyroid" position="1.129 -1.134 -3.726" scale="0.5 0.5 0.5"
+                rotation="0 -50 0" mostratext="target: #text-gyroid"
+                animation__enter="startEvents: mouseenter; property: scale; to: 0.6 0.6 0.6; dur: 200"
+                animation__leave="startEvents: mouseleave; property: scale; to: 0.5 0.5 0.5; dur: 500">
+            </a-entity>
+
+
+            <!-- Star -->
+            <a-entity gltf-model="#assetStar" position="2.959 2.442 -5.993" scale="0.01 0.01 0.01" rotation="0 15 0"
+                mostratext="target: #text-star"
+                animation__enter="startEvents: mouseenter; property: scale; to: 0.02 0.02 0.02; dur: 200"
+                animation__leave="startEvents: mouseleave; property: scale; to: 0.01 0.01 0.01; dur: 500">
+            </a-entity>
+
+            <!-- Projects grid (inicialment oculta) -->
+            <a-entity id="projectsGrid" visible="false" position="-1 1.2 -4.5" rotation="0 0 0">
+                <!-- fila superior -->
+                <a-plane id="p1" src="#treball1" width="0.8" height="0.8" position="-1.05 0.55 0" rotation="0 25 0"
+                    class="project"></a-plane>
+                <a-plane id="p2" src="#treball2" width="0.8" height="0.8" position="-0.1 0.55 0" rotation="0 25 0"
+                    class="project"></a-plane>
+                <a-plane id="p3" src="#treball3" width="0.8" height="0.8" position="0.85 0.55 0" rotation="0 25 0"
+                    class="project"></a-plane>
+
+                <!-- fila inferior -->
+                <a-plane id="p4" src="#treball4" width="0.8" height="0.8" position="-1.05 -0.45 0" rotation="0 25 0"
+                    class="project"></a-plane>
+                <a-plane id="p5" src="#treball5" width="0.8" height="0.8" position="-0.1 -0.45 0" rotation="0 25 0"
+                    class="project"></a-plane>
+                <a-plane id="p6" src="#treball6" width="0.8" height="0.8" position="0.85 -0.45 0" rotation="0 25 0"
+                    class="project"></a-plane>
+
+            </a-entity>
+            <!-- dins de <a-scene>, abans de tancar -->
+            <a-entity id="videoPanelRoot" visible="false" position="0 1.2 -3.0">
+                <a-plane id="videoBackdrop" width="2.4" height="1.6" color="#000" material="opacity:0.6"
+                    position="0 0 -0.01"></a-plane>
+                <a-plane id="videoPlane" width="2.2" height="1.24" position="0 0 0"
+                    material="shader: flat; src: #projVideo" class="clickable"></a-plane>
+            </a-entity>
+
+            <a-entity id="text-ardilla-click" position="-1.46 3.0 -6.0" rotation="0 0 0" visible="false"
+                scale="1.45 1.45 1.45"
+                always-on-top="renderOrder: 10000; depthTest: false; depthWrite: false; faceCamera: true">
+                <a-text value="I'm a student of DAM and I'm learning web development" align="center" color="#000000"
+                    width="8" material="shader: flat; side: double"></a-text>
+            </a-entity>
+
+
+
+
+
+
+        </a-scene>
+    </div>
+
+<script>
+  // component mostratext (manté la funcionalitat existent)
+  AFRAME.registerComponent("mostratext", {
+    schema: { target: { type: "selector" } },
+    init: function () {
+      const objeto = this.el;
+      const texto = this.data.target;
+      objeto.addEventListener("mouseenter", () => { if (texto) texto.setAttribute("visible", true); });
+      objeto.addEventListener("mouseleave", () => { if (texto) texto.setAttribute("visible", false); });
+    },
+  });
+
+  // utilitat per activar/desactivar la interactivitat dels children del grid
+  function setGridInteractive(gridEl, interactive) {
+    if (!gridEl) return;
+    // selecciona planes explícits o per classe project-plane
+    const planes = gridEl.querySelectorAll('.project-plane, [id^="p"]');
+    planes.forEach(p => {
+      if (interactive) {
+        p.classList.add('clickable');
+      } else {
+        p.classList.remove('clickable');
+      }
+    });
+  }
+
+  // Component per toggle grid al click de l'arbre (ara controla interactivitat dels planes)
+  AFRAME.registerComponent('toggle-grid-on-click', {
+    schema: { target: { type: 'selector' } },
+    init: function () {
+      const el = this.el;
+      const grid = this.data.target;
+      if (!grid) return;
+      el.addEventListener('click', () => {
+        const visible = !!grid.getAttribute('visible');
+        grid.setAttribute('visible', !visible);
+        // activar/desactivar interactivitat segons la nova visibilitat
+        setGridInteractive(grid, !visible);
+      });
+    }
+  });
+
+  // Component per hover scale + cursor
+  AFRAME.registerComponent('hover-scale-cursor', {
+    schema: { scaleTo: { type: 'number', default: 1.05 } },
+    init: function () {
+      const el = this.el;
+      const s = this.data.scaleTo;
+      el.setAttribute('scale', '1 1 1');
+      el.addEventListener('mouseenter', () => {
+        el.setAttribute('animation__hoveron', `property: scale; to: ${s} ${s} ${s}; dur: 150; easing: easeOutQuad`);
+        document.body.style.cursor = 'pointer';
+      });
+      el.addEventListener('mouseleave', () => {
+        el.setAttribute('animation__hoveroff', 'property: scale; to: 1 1 1; dur: 150; easing: easeOutQuad');
+        document.body.style.cursor = '';
+      });
+    }
+  });
+
+  // Component per togglear un target al click (per la ardilla)
+  AFRAME.registerComponent('toggle-target-on-click', {
+    schema: { target: { type: 'selector' } },
+    init: function () {
+      const el = this.el;
+      const target = this.data.target;
+      if (!target) return;
+      el.setAttribute('class', 'clickable');
+      el.addEventListener('mouseenter', () => document.body.style.cursor = 'pointer');
+      el.addEventListener('mouseleave', () => document.body.style.cursor = '');
+      el.addEventListener('click', (ev) => {
+        const isVisible = !!target.getAttribute('visible');
+        target.setAttribute('visible', !isVisible);
+        ev.stopPropagation();
+      });
+    }
+  });
+
+  // always-on-top component per al text (si ja el tens en un altre lloc, no cal tornar a registrar)
+  AFRAME.registerComponent('always-on-top', {
+    schema: {
+      renderOrder: { type: 'number', default: 9999 },
+      depthTest: { type: 'boolean', default: false },
+      depthWrite: { type: 'boolean', default: false },
+      faceCamera: { type: 'boolean', default: true }
+    },
+    init: function () {
+      this.applySoon = this.apply.bind(this);
+      this.el.addEventListener('model-loaded', this.applySoon);
+      setTimeout(this.applySoon, 50);
+    },
+    apply: function () {
+      const el = this.el;
+      const obj = el.getObject3D('mesh') || el.object3D;
+      if (!obj) return;
+      obj.traverse && obj.traverse(node => { if (node.frustumCulled !== undefined) node.frustumCulled = false; });
+      obj.traverse(node => {
+        if (node.material) {
+          try {
+            node.material.depthTest = this.data.depthTest;
+            node.material.depthWrite = this.data.depthWrite;
+            node.material.needsUpdate = true;
+          } catch (e) {}
+        }
+        node.renderOrder = this.data.renderOrder;
+      });
+      if (this.data.faceCamera) {
+        this.tick = () => {
+          const cam = document.querySelector('[camera]');
+          if (!cam) return;
+          const camPos = new THREE.Vector3();
+          cam.object3D.getWorldPosition(camPos);
+          el.object3D.lookAt(camPos);
+          el.object3D.rotation.x = 0;
+        };
+      }
+    }
+  });
+
+  // Inicialitzacions i assignacions d'interaccions (tot dins DOMContentLoaded)
+  document.addEventListener('DOMContentLoaded', () => {
+    // ----- arbre toggle grid -----
+    const treeEntity = document.querySelector('#arbreEntity') || document.querySelector('a-entity[gltf-model="#assetArbol"]');
+    if (treeEntity && treeEntity.setAttribute) {
+      treeEntity.setAttribute('toggle-grid-on-click', 'target: #projectsGrid');
+      treeEntity.setAttribute('class', 'clickable');
+    } else {
+      console.warn('No s\'ha trobat l\'entitat arbre per assignar toggle-grid-on-click. Afegeix toggle-grid-on-click="target: #projectsGrid" manualment.');
+    }
+
+    // ----- mapping planes -> rutes /treballsWeb -----
+    const mapping = {
+      'p1': '/treballsWeb/RickAndMorty/RickAndMorty.html',
+      'p2': '/treballsWeb/Exercici2/exercici2.html',
+      'p3': '/treballsWeb/Exercici3/exercici3.html',
+      'p4': '/treballsWeb/Exercici4/exercici4.html',
+      'p5': '/treballsWeb/Gim-Jump/Gim-Jump.html',
+      'p6': '/treballsWeb/WhacAMole/WhacAMole.html',
+    };
+
+    Object.keys(mapping).forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) {
+        console.warn('No trobat element amb id', id);
+        return;
+      }
+      // marca els planes com a project-plane per poder seleccionar-los després
+      el.classList.add('project-plane');
+      // NO afegim class 'clickable' per defecte; s'activarà quan el grid sigui visible
+      el.setAttribute('hover-scale-cursor', '');
+
+      // Handler d'obertura d'enllaç comprovarà si l'element és visible i clickable
+      el.addEventListener('click', (ev) => {
+        // comprova visibilitat del grid i la classe clickable
+        const projectsGrid = document.getElementById('projectsGrid');
+        if (!el.classList.contains('clickable') || (projectsGrid && !projectsGrid.getAttribute('visible'))) {
+          ev.stopPropagation();
+          return;
+        }
+        const url = mapping[id];
+        window.open(url, '_blank');
+        ev.stopPropagation();
+      });
+    });
+
+    // Assegura inicilament que el grid està no-interactiu si està ocult
+    const projectsGrid = document.getElementById('projectsGrid');
+    if (projectsGrid) {
+      const visible = !!projectsGrid.getAttribute('visible');
+      setGridInteractive(projectsGrid, !!visible);
+    }
+
+    // ----- gyroid clickable -> GitHub -----
+    const gyroid = document.getElementById('gyroidEntity') || document.querySelector('a-entity[gltf-model="#assetGyroid"]');
+    if (gyroid) {
+      gyroid.setAttribute('class', 'clickable');
+      gyroid.addEventListener('mouseenter', () => document.body.style.cursor = 'pointer');
+      gyroid.addEventListener('mouseleave', () => document.body.style.cursor = '');
+      gyroid.addEventListener('click', (ev) => {
+        window.open('https://github.com/Kaiserin92/', '_blank');
+        ev.stopPropagation();
+      });
+    } else {
+      console.warn('No se ha encontrado la entidad del gyroid para asignar click a GitHub.');
+    }
+
+    // ----- ardilla: toggle text al click -----
+    const ardilla = document.querySelector('#ardillaEntity') || document.querySelector('a-entity[gltf-model="#assetArdilla"]');
+    const ardillaText = document.getElementById('text-ardilla-click') || document.querySelector('#text-ardilla-click');
+    if (ardilla && ardillaText) {
+      ardilla.setAttribute('toggle-target-on-click', 'target: #text-ardilla-click');
+      // aplica always-on-top al text per assegurar visibilitat si cal
+      try { ardillaText.setAttribute('always-on-top', 'renderOrder: 10000; depthTest: false; depthWrite: false; faceCamera: true'); } catch(e){}
+    } else {
+      const fallbackText = document.getElementById('text-ardilla') || document.querySelector('#text-ardilla');
+      if (ardilla && fallbackText) {
+        ardilla.setAttribute('toggle-target-on-click', 'target: #text-ardilla');
+        try { fallbackText.setAttribute('always-on-top', 'renderOrder: 10000; depthTest: false; depthWrite: false; faceCamera: true'); } catch(e){}
+      } else {
+        console.warn('Ardilla o text-ardilla-click/text-ardilla no trobats. Afegeix id="ardillaEntity" i/o id="text-ardilla-click" si cal.');
+      }
+    }
+
+    // ----- video panel toggle per la bossa (open/close al mateix click) -----
+    const bag = document.querySelector('#bolsaEntity') || document.querySelector('a-entity[gltf-model="#assetBolsa"]');
+    const panelRoot = document.getElementById('videoPanelRoot'); // entidad del panel de vídeo dins de a-scene
+    const videoEl = document.getElementById('projVideo'); // <video> en a-assets
+    const videoPlane = document.getElementById('videoPlane');
+
+    if (!panelRoot || !videoEl || !videoPlane) {
+      console.warn('Falta videoPanelRoot o projVideo o videoPlane en DOM.');
+    } else {
+      function openVideoPanel() {
+        panelRoot.setAttribute('visible', true);
+        videoPlane.setAttribute('material', 'src', '#projVideo');
+        const p = videoEl.play();
+        if (p && p.catch) p.catch(() => { });
+      }
+      function closeVideoPanel() {
+        panelRoot.setAttribute('visible', false);
+        try { videoEl.pause(); } catch (e) { }
+      }
+
+      if (bag) {
+        bag.setAttribute('class', 'clickable');
+        bag.addEventListener('mouseenter', () => document.body.style.cursor = 'pointer');
+        bag.addEventListener('mouseleave', () => document.body.style.cursor = '');
+        bag.addEventListener('click', (ev) => {
+          const visible = !!panelRoot.getAttribute('visible');
+          if (visible) closeVideoPanel(); else openVideoPanel();
+          ev.stopPropagation();
+        });
+      } else {
+        console.warn('No se encontró la entidad bolsa.');
+      }
+
+      // click sobre el plane de vídeo: toggle play/pause
+      videoPlane.addEventListener('click', (ev) => {
+        if (videoEl.paused) videoEl.play(); else videoEl.pause();
+        ev.stopPropagation();
+      });
+
+      // observar visibilidad per pausar si ocultat
+      const obs = new MutationObserver(muts => {
+        muts.forEach(m => {
+          if (m.attributeName === 'visible') {
+            const v = panelRoot.getAttribute('visible');
+            if (!v) try { videoEl.pause(); } catch (e) { }
+          }
+        });
+      });
+      obs.observe(panelRoot, { attributes: true });
+    }
+
+  });
+</script>
+
+
+</body>
+
+</html>

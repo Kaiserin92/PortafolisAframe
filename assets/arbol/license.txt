@@ -1,0 +1,11 @@
+Model Information:
+* title:	Animal Crossing Tree (AI)
+* source:	https://sketchfab.com/3d-models/animal-crossing-tree-ai-e05c50b12a6f48a88137816427c4f6f8
+* author:	alexandermadrews (https://sketchfab.com/alexandermadrews)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Animal Crossing Tree (AI)" (https://sketchfab.com/3d-models/animal-crossing-tree-ai-e05c50b12a6f48a88137816427c4f6f8) by alexandermadrews (https://sketchfab.com/alexandermadrews) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

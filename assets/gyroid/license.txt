@@ -1,0 +1,11 @@
+Model Information:
+* title:	Animal crossing Gyroid
+* source:	https://sketchfab.com/3d-models/animal-crossing-gyroid-dd02039f30e2424b8c9c79cfbec5bacc
+* author:	Fnalex (https://sketchfab.com/Fnalex)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Animal crossing Gyroid" (https://sketchfab.com/3d-models/animal-crossing-gyroid-dd02039f30e2424b8c9c79cfbec5bacc) by Fnalex (https://sketchfab.com/Fnalex) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
